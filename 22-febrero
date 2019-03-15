@@ -1,14 +1,36 @@
+var pelotas = [];
+
+function setup() {
+	createCanvas(400, 400);
+	for (var i = 0; i < 100; i++) {
+		pelotas[i] = new Pelota();
+	}
+}
+
+function draw() {
+	background(0);
+	for (var i = 0; i < 100; i++) {
+	pelotas[i].mostrar();
+	pelotas[i].mover();
+	if (pelotas[i].salir()) {
+		pelotas[i].rebotar();
+	}
+	}
+
+//*******Se crea la clase*********
+
+}
 class Pelota {
 	constructor() {
-		this.x1 = 20;
-		this.y1 = 20;
-		this.velx = random(3,10);
-		this.vely = random(3,10);
-		this.posx = random(0, 400);
-		this.posy = random(0, 400);
-		this.R = random(0, 255);
-		this.G = random(0, 255);
-		this.B = random(0, 255);
+		this.x1 = 40;
+		this.y1 = 40;
+		this.velx = random(1,10);
+		this.vely = random(1,10);
+		this.posx = random(20, 380);
+		this.posy = random(20, 380);
+		this.R = random(200, 300);
+		this.G = random(200, 300);
+		this.B = random(200, 300);
 	}
 
 	mostrar() {
@@ -22,7 +44,7 @@ class Pelota {
 	}
 	salir() {
 		var res;
-		if (this.posx < 0 || this.posx > width || this.posy < 0 || this.posy > height ) {
+		if (this.posx < 20 || this.posx > width || this.posy < 20 || this.posy > 380 ) {
 			res = true
 		} else {
 			res = false
@@ -33,24 +55,4 @@ class Pelota {
 		this.velx = -this.velx
 		this.vely = -this.vely
 	}
-}
-var pelotas = [];
-
-function setup() {
-	createCanvas(400, 400);
-	for (var i = 0; i < 100; i++) {
-		pelotas[i] = new Pelota();
-	}
-}
-
-function draw() {
-	background(200);
-	for (var i = 0; i < 100; i++) {
-	pelotas[i].mostrar();
-	pelotas[i].mover();
-	if (pelotas[i].salir()) {
-		pelotas[i].rebotar();
-	}
-	}
-
 }
